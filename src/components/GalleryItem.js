@@ -1,8 +1,8 @@
 // GalleryItem.js
-import { useState } from 'react' 
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-function GalleryItem(props){
+function GalleryItem(props) {
     let [view, setView] = useState(false)
 
     const simpleStyle = {
@@ -11,7 +11,7 @@ function GalleryItem(props){
         'border': '1px solid black',
         'margin': '2px'
     }
-    
+
     const detailStyle = {
         'width': '80vw',
         'height': '20vh',
@@ -22,7 +22,7 @@ function GalleryItem(props){
         'backgroundSize': 'cover',
         'color': 'yellow'
     }
-
+    
     const simpleView = () => {
         return (
             <div style={simpleStyle}>
@@ -51,12 +51,12 @@ function GalleryItem(props){
             </div>
         )
     }
-    
+
 
     return (
-        <div onClick={() =>setView(!view)} style={{'display': 'inline-block'}}>
+        <div onClick={() => setView(!view)} style={{ 'display': 'inline-block' }}>
             <p>One Gallery Item</p>
-                {view ? detailView() : simpleView()}
+            {view ? detailView() : simpleView()}
         </div>
     )
 }
