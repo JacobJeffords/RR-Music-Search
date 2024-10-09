@@ -15,16 +15,21 @@ function App() {
 	useEffect(() => {
 		if (search) {
 			const fetchData = async () => {
-				document.title = `${search} Music`
-				const response = await fetch(API_URL + search)
-				const resData = await response.json()
-				if (resData.results.length > 0) {
-					return setData(resData.results)
+				const url = encodeURI(`https://itunes.apple.com/search?term=${search}`)
+				const response = await fetch(url)
+				const data = await response.json()
+				console.log(data)
+				if (data.results.length > 0) {
+					setData(data.results)
 				} else {
-					return setMessage('Not Found')
+					setData([])
+					setMessage('Not Found')
 				}
 			}
+
 			fetchData()
+		} else {
+			if (data) setData([])
 		}
 	}, [search])
 
@@ -53,5 +58,4 @@ function App() {
 }
 
 export default App;
-
 
